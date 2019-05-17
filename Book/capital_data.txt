@@ -1,0 +1,24 @@
+India/New Delhi
+China/Beijing
+France/Paris
+Argentina/Buenos Aires
+Egypt/Cairo
+USA/Washington D.C.
+United States/Washington D.C.
+United States of America/Washington D.C.
+Mexico/Mexico City
+Canada/Ottawa
+Hungary/Budapest
+Iceland/Reykjavik
+Iran/Tehran
+Turkey/Ankara
+Sweden/Stockholm
+South Korea/Seoul
+Japan/Tokyo
+Brazil/Brasilia
+Nigeria/Abuja
+Chad/N'Djamena
+Vietnam/Hanoi
+Spain/Madrid
+Finland/Helsinki
+Greece/Athens
