@@ -55,10 +55,23 @@ if Input in ["Area" , "area"] :
             Radius = math.sqrt(int(Area) / pi)
             print("The area of your circle is:")
             print(Radius)
+            
+if Input in [ "Circumference" , "circumference" ] :
+    Circumference = raw_input("Enter the circumference of a circle: ")
+    
+    if Output in ["Area" , "area"] :
+            Area = (((int(Circumference) / pi) / 2 ) **2 ) * pi)
+            print("The area of your circle is:")
+            print(Area)
+            
+    if Output in ["Diameter" , "diameter"] :
+            Diameter = int(Circumference) / pi 
+            print("The diameter of your circle is:")
+            print(Diameter)
+    
+    if Output in ["Radius" , "radius"] :
+            Radius = (int(Circumference) / pi) / 2
+            print("The area of your circle is:")
+            print(Radius)
 
 print("Thank you for using Circles.py!")
-
-#[ "Circumference" , "circumference" ] 
-#[ "Diameter" , "diameter" ] 
-#[ "Area" , "area" ]
-#[ "Radius" , "radius" ]
