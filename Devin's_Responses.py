@@ -1,6 +1,6 @@
 import time
-redo = ""
-while redo not in ["q"] :
+redo = "This_means_keep_going"
+while redo not in [""] :
      print("lala")
      time.sleep(2)
-     redo = raw_input("Press the key 'q' and then the key 'enter' to quit.")
+     redo = raw_input("Press the key 'enter' to quit.")
