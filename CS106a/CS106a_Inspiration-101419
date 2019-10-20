@@ -1,0 +1,24 @@
+strs1 = raw_input("Type in anything you want!  ")
+implets = raw_input("Tell me what letters you want to pull out of what you just typed: ")
+
+xfullimplets1 = implets.lower()
+xfullimplets2 = implets.upper()
+xfullimplets = xfullimplets1 + xfullimplets2
+
+left = strs1.find('[')
+leftone = left + 1
+
+s2 = strs1[leftone:]
+right = s2.find(']')
+
+fullimplets = s2[:right]
+print(fullimplets)
+s = fullimplets
+
+result = ''
+for i in range(len(s)):
+    char = s[i]
+    if char in s :
+        result += s[i]
+        
+print('The letters I got were: ' + result)
