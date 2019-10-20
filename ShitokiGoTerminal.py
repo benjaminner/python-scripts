@@ -4,12 +4,12 @@ import webbrowser
 
 while True:
     query = raw_input(">>> ")
-    if query[:3] == "lgn" :
-        login = query[3:]
-        terminR = open("terminalfile.txt","a")
-        terminR.write(login)
-        termin = open("terminalfile.txt","r")   
-        print(termin.read())
+   # if query[:3] == "lgn" :
+      #  login = query[3:]
+       # terminR = open("terminalfile.txt","a")
+        #terminR.write(login)
+        #termin = open("terminalfile.txt","r")   
+        #print(termin.read())
         
     if query[:8] == ".action." :
         if query[8:11] == "do." :
@@ -18,5 +18,8 @@ while True:
         if query[8:14] == "speak." :
             saY = query[14:]
             os.system("say " + saY)
+        if query[8:12] == "see." :
+            sEeEeEE = query[12:]
+            webbrowser.open("https://www.google.com/search?q=" + sEeEeEE  + "&sxsrf=ACYBGNQX_tF_V19Wx0-RCp1ahN-1bcB37A:1571603918943&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiHucPq2KvlAhWELn0KHVw2BZAQ_AUIEygC&biw=1440&bih=789")
     if query == "quit()" :
             break
