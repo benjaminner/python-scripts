@@ -31,7 +31,3 @@ while True:
                 break
             elif Query == "help" :
                 print("'.action.root.quit' to quit!")
-        else:
-            print("Sorry, that's not a command!")
-    else:
-        print("Sorry, that's not a command!")
