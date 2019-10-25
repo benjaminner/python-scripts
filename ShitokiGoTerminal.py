@@ -3,6 +3,10 @@ import os
 import webbrowser
 import getpass
 os.system("say Hello, and welcome to the Shitoki Go! interactive terminal SGIT!")
+usrpswd = {"Ben" : "brainlakeadmin1", }
+usrshrt = {"Ben" : "ben", }
+ysia = raw_input("Brainlake Username: ")
+pswd = getpass.getpass("Brainlake Password: ")
 
 def search(query, number):       
     if number == "00" :
@@ -26,16 +30,33 @@ def search(query, number):
                 if query[13:] == "erase":
                     password = getpass.getpass("Pswd>>> ")
                     if password == "securebrainlakeadmin":
-                        os.system("cd termfiles")
-                        open(queryF, 'w')
+                        tst = open("/Users/ben/Desktop/termfiles/" + queryF, 'w')
+                        tst.close()
                 if query[13:] == "read":
-                    os.system("cd termfiles ; more " + queryF)
+                    os.system("cd /Users/ben/Desktop/termfiles ; more " + queryF)
                 if query[13:] == "append" :
-                    file = open(queryF, 'a')
+                    file = open("/Users/ben/Desktop/termfiles/" + queryF, 'a')
                     queryW = raw_input("bgn>>> ")
                     file.write(queryW)
+                    file.close()
+            if query[8:16] == "message.":
+                tojoin = raw_input("A4>>> ")
+                if query[16:] == "create":
+                    os.system("cd /Users/ben/Desktop/termfiles ; touch " + tojoin + "_message.txt")
+                else:
+                    toJoin = "/Users/ben/Desktop/termfiles/" + tojoin + "_message.txt"
+                    while True:
+                        file = open(toJoin,'r+')
+                        nul = sum(1 for line in open(toJoin))
+                        lines = file.readlines()
+                        print(lines[nul-1])
+                        TEXt = raw_input("bgn>>> ")
+                        if TEXt == ".action.root.quit":
+                            break
+                        file.write("\n" + "usr_" + usrshrt[ysia] + ">>> " + TEXt)
                     
-while True:
+                    
+while usrpswd[ysia] == pswd:
     query = raw_input(">>> ")
     search(query, "00")
     if query[8:13] == "root." :
