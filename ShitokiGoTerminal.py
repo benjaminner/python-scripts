@@ -151,24 +151,24 @@ def search(query, number):
                 queryF = raw_input("A4>>> ")
                 qurye = query[13:]
                 if qurye == "create":
-                    os.system("cd /Users/ben/Desktop/termfiles ; touch " + queryF)
+                    os.system("cd Desktop/Coding/python ; touch " + queryF)
                 if qurye == "erase":
                     password = getpass.getpass("Pswd>>> ")
                     if password == "securebrainlakeadmin":
-                        tst = open("/Users/ben/Desktop/termfiles/" + queryF, 'w')
+                        tst = open("Desktop/Coding/python/" + queryF, 'w')
                         tst.close()
                 if qurye == "read":
-                    file = open("/Users/ben/Desktop/termfiles/" + queryF, 'r')
+                    file = open("Desktop/Coding/python/" + queryF, 'r')
                     for line in file.readlines:
                         print(Decode(line))
                 if qurye == "append" :
-                    file = open("/Users/ben/Desktop/termfiles/" + queryF, 'a')
+                    file = open("Desktop/Coding/python/" + queryF, 'a')
                     queryW = raw_input("bgn>>> ")
                     file.write(FW(queryW))
                     file.close()
             if query[8:16] == "message.":
                 tojoin = raw_input("A4>>> ")
-                toJoin = "/Users/ben/Desktop/termfiles/" + tojoin + "_message.txt"
+                toJoin = "Desktop/Coding/python/" + tojoin + "_message.txt"
                 if query[16:] == "create":
                     os.system("cd /Users/ben/Desktop/termfiles ; touch " + tojoin + "_message.txt")
                 elif query[16:] == "seeall":
@@ -202,7 +202,7 @@ if Qqq == "1" :
             if Query == "quit" :
                 break
             if Query == "help" :
-                os.system("more /Users/ben/Desktop/termfiles/terminalfile.txt")
+                os.system("more Desktop/Coding/python/terminalfile.txt")
             
 if qqq == "0":
     print("Oops, that's not the right password!")

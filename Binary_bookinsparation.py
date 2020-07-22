@@ -96,6 +96,6 @@ binarize_dictionary = {
 '~' : '01111110',
 }
 
-inputmessage = input("Enter a message: ")
+inputmessage = str(input("Enter a message: "))
 for character in inputmessage:
     print(binarize_dictionary[character])
