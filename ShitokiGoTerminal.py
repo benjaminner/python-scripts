@@ -103,6 +103,7 @@ def FW(value):
         
 def Decode(str):
     decode = ''
+    arr = []
     for i in range(0,len(str),5):
          arr.append(str[slice(i,i+5,1)])
     for item in arr:
@@ -115,6 +116,7 @@ print('Hello, and welcome to the Shitoki Go! interactive terminal(SGIT)!')
 import os 
 import webbrowser
 import getpass
+import datetime
 os.system("say Hello, and welcome to the Shitoki Go! interactive terminal SGIT!")
 usrpswd = {"Ben" : "brainlakeadmin1","Devin" : "brainlakeadmin2", }
 usrshrt = {"Ben" : "ben", "Devin": "dvn",}
@@ -151,24 +153,24 @@ def search(query, number):
                 queryF = raw_input("A4>>> ")
                 qurye = query[13:]
                 if qurye == "create":
-                    os.system("cd Desktop/Coding/python ; touch " + queryF)
+                    os.system("cd /Users/Ben/Desktop/Coding/python ; touch " + queryF)
                 if qurye == "erase":
                     password = getpass.getpass("Pswd>>> ")
                     if password == "securebrainlakeadmin":
-                        tst = open("Desktop/Coding/python/" + queryF, 'w')
-                        tst.close()
+                        file = open("/Users/Ben/Desktop/Coding/python/" + queryF, 'w')
+                        file.close()
                 if qurye == "read":
-                    file = open("Desktop/Coding/python/" + queryF, 'r')
-                    for line in file.readlines:
+                    file = open("/Users/Ben/Desktop/Coding/python/" + queryF, 'r')
+                    for line in file.readlines():
                         print(Decode(line))
                 if qurye == "append" :
-                    file = open("Desktop/Coding/python/" + queryF, 'a')
+                    file = open("/Users/Ben/Desktop/Coding/python/" + queryF, 'a')
                     queryW = raw_input("bgn>>> ")
                     file.write(FW(queryW))
                     file.close()
             if query[8:16] == "message.":
                 tojoin = raw_input("A4>>> ")
-                toJoin = "Desktop/Coding/python/" + tojoin + "_message.txt"
+                toJoin = "/Users/Ben/Desktop/Coding/python/" + tojoin + "_message.txt"
                 if query[16:] == "create":
                     os.system("cd /Users/ben/Desktop/termfiles ; touch " + tojoin + "_message.txt")
                 elif query[16:] == "seeall":
@@ -189,20 +191,26 @@ def search(query, number):
                             os.system("cd /Users/ben/Desktop/termfiles ; more " + toJoin)
                         else:
                             file.write(FW("usr_" + usrshrtd + " said " + TEXt + "\n"))
-            if query[8:12] == "SGB.":
-                os.system("open '/Users/ben/Desktop/AppleScript/ShitokiGo.app'")
-                    
-                    
+            if query[8:16] == "program.":
+                if query[16:] == "SG":
+                    os.system("open '/Users/ben/Desktop/Coding/AppleScript/ShitokiGo.app'")
+            if query[8:14] == "clock.":
+                current = datetime.datetime.now()
+                if query[14:] == "time":
+                    print(current.strftime("%I") + ":" + current.strftime("%M") + ":" + current.strftime("%S") + " " + current.strftime("%p")) 
+                if query[14:] == "date":
+                    print(current.strftime("%A") + ", " + current.strftime("%B") + " " + current.strftime("%d") + ", " + current.strftime("%Y")) 
+                if query[14:] == "full":
+                    print(current.strftime("%I") + ":" + current.strftime("%M") + ":" + current.strftime("%S") + " " + current.strftime("%p") + ", " + current.strftime("%A") + ", " + current.strftime("%B") + " " + current.strftime("%d") + ", " + current.strftime("%Y")) 
+                if query[14:] == "terminal":
+                    print(current.strftime("%a") + ", " + current.strftime("%d") + " " + current.strftime("%b") + " " + current.strftime("%Y") + " " + current.strftime("%H") + ":" + current.strftime("%M") + ":" + current.strftime("%S"))
+                
 if Qqq == "1" :
     while usrpswd[ysia] == pswd:
         query = raw_input("usr_" + usrshrtd + ">>> ")
         search(query, "00")
-        if query[8:13] == "root." :
-            Query = query[13:]
-            if Query == "quit" :
-                break
-            if Query == "help" :
-                os.system("more Desktop/Coding/python/terminalfile.txt")
+        if query == ".quit" :
+            break
             
 if qqq == "0":
     print("Oops, that's not the right password!")
