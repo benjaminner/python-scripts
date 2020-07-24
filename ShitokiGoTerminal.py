@@ -1,3 +1,4 @@
+#version 2.1.1
 # coding: utf-8
 
 Encrypt = {
@@ -109,7 +110,7 @@ def Decode(str):
     for item in arr:
         for key, value in Encrypt.items():
             if value == item:
-                    decode = decode + key
+                    decode += key
     return decode
     
 print('Hello, and welcome to the Shitoki Go! interactive terminal(SGIT)!')
@@ -129,7 +130,7 @@ else:
     usrshrtd = usrshrt[ysia]
 pswd = getpass.getpass("Brainlake Password: ")
 if qqq == "2" :
-    print("Oops, an unexpected error occured! Please tell Ben M. about this error so he can try to fix it!")
+    print("I'm sorry, that is an invalid user account.")
 elif pswd == usrpswd[ysia]:
     Qqq = "1"
     qqq = "1"
@@ -163,48 +164,77 @@ def search(query, number):
                     file = open("/Users/Ben/Desktop/Coding/python/" + queryF, 'r')
                     for line in file.readlines():
                         print(Decode(line))
+                    file.close()
                 if qurye == "append" :
                     file = open("/Users/Ben/Desktop/Coding/python/" + queryF, 'a')
                     queryW = raw_input("bgn>>> ")
                     file.write(FW(queryW))
                     file.close()
             if query[8:16] == "message.":
-                tojoin = raw_input("A4>>> ")
-                toJoin = "/Users/Ben/Desktop/Coding/python/" + tojoin + "_message.txt"
                 if query[16:] == "create":
-                    os.system("cd /Users/ben/Desktop/termfiles ; touch " + tojoin + "_message.txt")
+                    tojoin = raw_input("A4>>> ")
+                    os.system("cd /Users/Ben/Desktop/Coding/python ; touch " + tojoin + "_message.txt")
                 elif query[16:] == "seeall":
-                    os.system("cd /Users/ben/Desktop/termfiles ; more " + toJoin)
+                    tojoin = raw_input("A4>>> ")
+                    file = open("/Users/Ben/Desktop/Coding/python/" + tojoin + "_message.txt", 'r')
+                    for line in file.readlines():
+                        print(Decode(line))
+                    file.close()
                 else:
                     while True:
-                        file = open(toJoin,'r+')
-                        nul = sum(1 for line in open(toJoin))
-                        lines = file.readlines()
-                        if nul != "0":
-                            print(Decode(lines[nul-1]))
-                        else:
+                        file = open("/Users/Ben/Desktop/Coding/python/" + query[16:] + "_message.txt",'r')
+                        tong = 0
+                        for line in file.readlines():
+                            tong += 1
+                            print(Decode(line))
+                        file.close()
+                        if tong == 0:
                             print("\\Nothing to see here!")
                         TEXt = raw_input("bgn>>> ")
-                        if TEXt == ".action.root.quit":
+                        if TEXt == ".quit":
                             break
-                        elif TEXt == ".action.message.seeall":
-                            os.system("cd /Users/ben/Desktop/termfiles ; more " + toJoin)
                         else:
-                            file.write(FW("usr_" + usrshrtd + " said " + TEXt + "\n"))
-            if query[8:16] == "program.":
-                if query[16:] == "SG":
-                    os.system("open '/Users/ben/Desktop/Coding/AppleScript/ShitokiGo.app'")
+                            cu = datetime.datetime.now()
+                            file = open("/Users/Ben/Desktop/Coding/python/" + query[16:] + "_message.txt",'a')
+                            file.write(FW("[" + cu.strftime("%a") + ", " + cu.strftime("%d") + " " + cu.strftime("%b") + " " + cu.strftime("%Y") + " " + cu.strftime("%H") + ":" + cu.strftime("%M") + ":" + cu.strftime("%S") + "] usr_" + usrshrtd + " said " + TEXt) + "\n")
+                            file.close()
+            if query[8:10] == "SG":
+                os.system("open '/Users/ben/Desktop/Coding/AppleScript/ShitokiGo.app'")
             if query[8:14] == "clock.":
-                current = datetime.datetime.now()
+                cu = datetime.datetime.now()
                 if query[14:] == "time":
-                    print(current.strftime("%I") + ":" + current.strftime("%M") + ":" + current.strftime("%S") + " " + current.strftime("%p")) 
+                    print(cu.strftime("%I") + ":" + cu.strftime("%M") + ":" + cu.strftime("%S") + " " + cu.strftime("%p")) 
                 if query[14:] == "date":
-                    print(current.strftime("%A") + ", " + current.strftime("%B") + " " + current.strftime("%d") + ", " + current.strftime("%Y")) 
+                    print(cu.strftime("%A") + ", " + cu.strftime("%B") + " " + cu.strftime("%d") + ", " + cu.strftime("%Y")) 
                 if query[14:] == "full":
-                    print(current.strftime("%I") + ":" + current.strftime("%M") + ":" + current.strftime("%S") + " " + current.strftime("%p") + ", " + current.strftime("%A") + ", " + current.strftime("%B") + " " + current.strftime("%d") + ", " + current.strftime("%Y")) 
+                    print(cu.strftime("%I") + ":" + cu.strftime("%M") + ":" + cu.strftime("%S") + " " + cu.strftime("%p") + ", " + cu.strftime("%A") + ", " + cu.strftime("%B") + " " + cu.strftime("%d") + ", " + cu.strftime("%Y")) 
                 if query[14:] == "terminal":
-                    print(current.strftime("%a") + ", " + current.strftime("%d") + " " + current.strftime("%b") + " " + current.strftime("%Y") + " " + current.strftime("%H") + ":" + current.strftime("%M") + ":" + current.strftime("%S"))
+                    print(cu.strftime("%a") + ", " + cu.strftime("%d") + " " + cu.strftime("%b") + " " + cu.strftime("%Y") + " " + cu.strftime("%H") + ":" + cu.strftime("%M") + ":" + cu.strftime("%S"))
+            if query[8:15] == "python.":
+                os.system("python /Users/Ben/Desktop/Coding/python/" + query[15:])
+            if query[8:13] == "wiki.":
+                webbrowser.open("https://www.wikipedia.com/wiki/" + query[13:])
                 
+        if query[:5] == ".get.":
+            qeri = query[7:]
+            if query[5:7] == "A.":
+                a = raw_input(qeri)
+            if query[5:7] == "B.":
+                b = raw_input(qeri)
+            if query[5:7] == "C.":
+                c = raw_input(qeri)
+            if query[5:7] == "D.":
+                d = raw_input(qeri)
+            if query[5:7] == "E.":
+                e = raw_input(qeri)
+            if query[5:7] == "F.":
+                f = raw_input(qeri)
+            if query[5:7] == "G.":
+                g = raw_input(qeri)
+            if query[5:7] == "H.":
+                h = raw_input(qeri)
+            
+            
 if Qqq == "1" :
     while usrpswd[ysia] == pswd:
         query = raw_input("usr_" + usrshrtd + ">>> ")
