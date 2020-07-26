@@ -9,3 +9,4 @@
 2.0: Added some simple bug fixes and datetime func / July 22, 2020
 2.0.1: More simple bug fixes / July 23, 2020
 2.0.2: Bug fixes and message fixes / July 24, 2020
+2.1: Added Try/Except func and shortened imports / July 26, 2020

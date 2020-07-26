@@ -1,4 +1,4 @@
-#version 2.1.1
+#version 2.1
 # coding: utf-8
 
 Encrypt = {
@@ -115,9 +115,9 @@ def Decode(str):
     
 print('Hello, and welcome to the Shitoki Go! interactive terminal(SGIT)!')
 import os 
-import webbrowser
-import getpass
-import datetime
+import webbrowser as web
+import getpass as gp
+import datetime as dt
 os.system("say Hello, and welcome to the Shitoki Go! interactive terminal SGIT!")
 usrpswd = {"Ben" : "brainlakeadmin1","Devin" : "brainlakeadmin2", }
 usrshrt = {"Ben" : "ben", "Devin": "dvn",}
@@ -128,7 +128,7 @@ if not ysia in usrpswd:
     qqq = "2"
 else:
     usrshrtd = usrshrt[ysia]
-pswd = getpass.getpass("Brainlake Password: ")
+pswd = gp.getpass("Brainlake Password: ")
 if qqq == "2" :
     print("I'm sorry, that is an invalid user account.")
 elif pswd == usrpswd[ysia]:
@@ -140,13 +140,13 @@ def search(query, number):
         if query[:8] == ".action." :
             if query[8:11] == "do." :
                 action = query[11:]
-                webbrowser.open("https://www.youtube.com/results?search_query=" + action)
+                web.open("https://www.youtube.com/results?search_query=" + action)
             if query[8:14] == "speak." :
                 saY = query[14:]
                 os.system("say " + saY)
             if query[8:12] == "see." :
                 sEeEeEE = query[12:]
-                webbrowser.open("https://www.google.com/search?q=" + sEeEeEE  + "&sxsrf=ACYBGNQX_tF_V19Wx0-RCp1ahN-1bcB37A:1571603918943&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiHucPq2KvlAhWELn0KHVw2BZAQ_AUIEygC&biw=1440&bih=789")
+                web.open("https://www.google.com/search?q=" + sEeEeEE  + "&sxsrf=ACYBGNQX_tF_V19Wx0-RCp1ahN-1bcB37A:1571603918943&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiHucPq2KvlAhWELn0KHVw2BZAQ_AUIEygC&biw=1440&bih=789")
             if query[8:12] == "run." :
                 RuN = query[12:]
                 os.system(RuN)
@@ -156,52 +156,65 @@ def search(query, number):
                 if qurye == "create":
                     os.system("cd /Users/Ben/Desktop/Coding/python ; touch " + queryF)
                 if qurye == "erase":
-                    password = getpass.getpass("Pswd>>> ")
+                    password = gp.getpass("Pswd>>> ")
                     if password == "securebrainlakeadmin":
                         file = open("/Users/Ben/Desktop/Coding/python/" + queryF, 'w')
                         file.close()
                 if qurye == "read":
-                    file = open("/Users/Ben/Desktop/Coding/python/" + queryF, 'r')
-                    for line in file.readlines():
-                        print(Decode(line))
-                    file.close()
+                    try:
+                        file = open("/Users/Ben/Desktop/Coding/python/" + queryF, 'r')
+                        for line in file.readlines():
+                            print(Decode(line))
+                        file.close()
+                    except IOError:
+                        print("File "+ queryF + " does not exist.")
                 if qurye == "append" :
-                    file = open("/Users/Ben/Desktop/Coding/python/" + queryF, 'a')
-                    queryW = raw_input("bgn>>> ")
-                    file.write(FW(queryW))
-                    file.close()
+                    try:
+                        file = open("/Users/Ben/Desktop/Coding/python/" + queryF, 'a')
+                        queryW = raw_input("bgn>>> ")
+                        file.write(FW(queryW))
+                        file.close()
+                    except IOError:
+                        print("File "+ queryF + " does not exist.")
             if query[8:16] == "message.":
                 if query[16:] == "create":
                     tojoin = raw_input("A4>>> ")
                     os.system("cd /Users/Ben/Desktop/Coding/python ; touch " + tojoin + "_message.txt")
                 elif query[16:] == "seeall":
                     tojoin = raw_input("A4>>> ")
-                    file = open("/Users/Ben/Desktop/Coding/python/" + tojoin + "_message.txt", 'r')
-                    for line in file.readlines():
-                        print(Decode(line))
-                    file.close()
-                else:
-                    while True:
-                        file = open("/Users/Ben/Desktop/Coding/python/" + query[16:] + "_message.txt",'r')
-                        tong = 0
+                    try:
+                        file = open("/Users/Ben/Desktop/Coding/python/" + tojoin + "_message.txt", 'r')
                         for line in file.readlines():
-                            tong += 1
                             print(Decode(line))
                         file.close()
-                        if tong == 0:
-                            print("\\Nothing to see here!")
-                        TEXt = raw_input("bgn>>> ")
-                        if TEXt == ".quit":
-                            break
-                        else:
-                            cu = datetime.datetime.now()
-                            file = open("/Users/Ben/Desktop/Coding/python/" + query[16:] + "_message.txt",'a')
-                            file.write(FW("[" + cu.strftime("%a") + ", " + cu.strftime("%d") + " " + cu.strftime("%b") + " " + cu.strftime("%Y") + " " + cu.strftime("%H") + ":" + cu.strftime("%M") + ":" + cu.strftime("%S") + "] usr_" + usrshrtd + " said " + TEXt) + "\n")
+                    except IOError:
+                        print("Message "+ tojoin + " does not exist.")
+                else:
+                    while True:
+                        try:
+                            file = open("/Users/Ben/Desktop/Coding/python/" + query[16:] + "_message.txt",'r')
+                            tong = 0
+                            for line in file.readlines():
+                                tong += 1
+                                print(Decode(line))
                             file.close()
+                            if tong == 0:
+                                print("\\Nothing to see here!")
+                            TEXt = raw_input("bgn>>> ")
+                            if TEXt == ".quit":
+                                break
+                            else:
+                                cu = dt.datetime.now()
+                                file = open("/Users/Ben/Desktop/Coding/python/" + query[16:] + "_message.txt",'a')
+                                file.write(FW("[" + cu.strftime("%a") + ", " + cu.strftime("%d") + " " + cu.strftime("%b") + " " + cu.strftime("%Y") + " " + cu.strftime("%H") + ":" + cu.strftime("%M") + ":" + cu.strftime("%S") + "] usr_" + usrshrtd + " said " + TEXt) + "\n")
+                                file.close()
+                        except IOError:
+                            print("Message "+ query[16:] + " does not exist.")
+                            break
             if query[8:10] == "SG":
                 os.system("open '/Users/ben/Desktop/Coding/AppleScript/ShitokiGo.app'")
             if query[8:14] == "clock.":
-                cu = datetime.datetime.now()
+                cu = dt.datetime.now()
                 if query[14:] == "time":
                     print(cu.strftime("%I") + ":" + cu.strftime("%M") + ":" + cu.strftime("%S") + " " + cu.strftime("%p")) 
                 if query[14:] == "date":
@@ -213,7 +226,7 @@ def search(query, number):
             if query[8:15] == "python.":
                 os.system("python /Users/Ben/Desktop/Coding/python/" + query[15:])
             if query[8:13] == "wiki.":
-                webbrowser.open("https://www.wikipedia.com/wiki/" + query[13:])
+                web.open("https://www.wikipedia.com/wiki/" + query[13:])
                 
         if query[:5] == ".get.":
             qeri = query[7:]
