@@ -1,4 +1,4 @@
-#version 2.1
+#version 2.2
 # coding: utf-8
 
 Encrypt = {
@@ -96,6 +96,33 @@ Encrypt = {
 '~' : '01101',
 ' ' : '01111'
 }
+
+dates = {
+    'January' : 1,
+    'Jan' : 1,
+    'February' : 2,
+    'Feb' : 2,
+    'March' : 3,
+    'Mar' : 3,
+    'April' : 4,
+    'Apr' : 4,
+    'May' : 5,
+    'June' : 6,
+    'Jun' : 6,
+    'July' : 7,
+    'Jul' : 7,
+    'August' : 8,
+    'Aug' : 8,
+    'September' : 9,
+    'Sep' : 9,
+    'October' : 10,
+    'Oct' : 10,
+    'November' : 11,
+    'Nov' : 11,
+    'December' : 12,
+    'Dec' : 12
+}
+
 def FW(value):
     encryption = ''
     for char in value:
@@ -125,15 +152,14 @@ ysia = raw_input("Brainlake Username: ")
 qqq = "0"
 Qqq = "0"
 if not ysia in usrpswd:
+    print("I'm sorry, that is an invalid user account.")
     qqq = "2"
 else:
     usrshrtd = usrshrt[ysia]
-pswd = gp.getpass("Brainlake Password: ")
-if qqq == "2" :
-    print("I'm sorry, that is an invalid user account.")
-elif pswd == usrpswd[ysia]:
-    Qqq = "1"
-    qqq = "1"
+    pswd = gp.getpass("Brainlake Password: ")
+    if pswd == usrpswd[ysia]:
+        Qqq = "1"
+        qqq = "1"
 
 def search(query, number):       
     if number == "00" :
@@ -216,13 +242,32 @@ def search(query, number):
             if query[8:14] == "clock.":
                 cu = dt.datetime.now()
                 if query[14:] == "time":
-                    print(cu.strftime("%I") + ":" + cu.strftime("%M") + ":" + cu.strftime("%S") + " " + cu.strftime("%p")) 
+                    print(cu.strftime("%I:%M:%S %p")) 
                 if query[14:] == "date":
-                    print(cu.strftime("%A") + ", " + cu.strftime("%B") + " " + cu.strftime("%d") + ", " + cu.strftime("%Y")) 
+                    print(cu.strftime("%A, %B %d, %Y")) 
                 if query[14:] == "full":
-                    print(cu.strftime("%I") + ":" + cu.strftime("%M") + ":" + cu.strftime("%S") + " " + cu.strftime("%p") + ", " + cu.strftime("%A") + ", " + cu.strftime("%B") + " " + cu.strftime("%d") + ", " + cu.strftime("%Y")) 
+                    print(cu.strftime("%I:%M:%S %p, %A, %B %d, %Y")) 
                 if query[14:] == "terminal":
-                    print(cu.strftime("%a") + ", " + cu.strftime("%d") + " " + cu.strftime("%b") + " " + cu.strftime("%Y") + " " + cu.strftime("%H") + ":" + cu.strftime("%M") + ":" + cu.strftime("%S"))
+                    print(cu.strftime("%a, %d %b %Y %H:%M:%S"))
+                if query[14:19] == "until":
+                    futured = "no"
+                    FUTime = raw_input("A4>>> ")
+                    if FUTime[:FUTime.find(' ')] in dates.keys():
+                        try:
+                            Future = dt.datetime( int(FUTime[FUTime.find(',')+2:]), dates[FUTime[:FUTime.find(' ')]], int(FUTime[FUTime.find(' ')+1:FUTime.find(',')]) )
+                        except:
+                           print("I'm sorry, that is not a valid date.")
+                        else:
+                            futured = "yes" 
+                    else:
+                        try:
+                            Future = dt.datetime( int(FUTime[FUTime.find(',')+2:]), int(FUTime[:FUTime.find(' ')]), int(FUTime[FUTime.find(' ')+1:FUTime.find(',')]) )
+                        except:
+                            print("I'm sorry, that is not a valid date.")
+                        else:
+                            futured = "yes"
+                    if futured == "yes":
+                        print(Future - cu)
             if query[8:15] == "python.":
                 os.system("python /Users/Ben/Desktop/Coding/python/" + query[15:])
             if query[8:13] == "wiki.":
