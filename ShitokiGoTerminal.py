@@ -145,6 +145,8 @@ import os
 import webbrowser as web
 import getpass as gp
 import datetime as dt
+import playsound as ps
+
 os.system("say Hello, and welcome to the Shitoki Go! interactive terminal SGIT!")
 usrpswd = {"Ben" : "brainlakeadmin1","Devin" : "brainlakeadmin2", }
 usrshrt = {"Ben" : "ben", "Devin": "dvn",}
@@ -272,7 +274,12 @@ def search(query, number):
                 os.system("python /Users/Ben/Desktop/Coding/python/" + query[15:])
             if query[8:13] == "wiki.":
                 web.open("https://www.wikipedia.com/wiki/" + query[13:])
-                
+            if query[8:14] == "sound.":
+                try:
+                    ps.playsound("/Users/Ben/Desktop/Coding/python/" + query[14:],True)
+                except:
+                    print("I'm sorry, that is not a valid sound file.")
+                                
         if query[:5] == ".get.":
             qeri = query[7:]
             if query[5:7] == "A.":
