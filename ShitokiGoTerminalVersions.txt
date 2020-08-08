@@ -11,3 +11,5 @@
 2.0.2: Bug fixes and message fixes / July 24, 2020
 2.1: Added Try/Except func and shortened imports / July 26, 2020
 2.2: Shortened and added to the clock func / July 27, 2020
+2.2.1: Added Playsound func / August 1, 2020
+2.2.2: Added stopwatch func / August 8, 2020

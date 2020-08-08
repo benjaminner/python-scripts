@@ -251,6 +251,10 @@ def search(query, number):
                     print(cu.strftime("%I:%M:%S %p, %A, %B %d, %Y")) 
                 if query[14:] == "terminal":
                     print(cu.strftime("%a, %d %b %Y %H:%M:%S"))
+                if query[14:] == "stopwatch":
+                    raw_input("Press 'Enter' to stop the stopwatch.")
+                    cunow = dt.datetime.now()
+                    print(cunow - cu)
                 if query[14:19] == "until":
                     futured = "no"
                     FUTime = raw_input("A4>>> ")

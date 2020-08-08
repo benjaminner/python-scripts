@@ -37,7 +37,6 @@ while "quit" not in ToDo.lower() and "exit" not in ToDo.lower() :
         print(Ht)
     elif ToDo == "e" or ToDo == "encode" :
         Decoded = raw_input("Enter the text to be encoded here: ")
-        Decoded = Decoded.lower()
         StrHt = str(Ht)
         StrHt = StrHt[1:len(StrHt)-1]
         a = 0
@@ -45,7 +44,7 @@ while "quit" not in ToDo.lower() and "exit" not in ToDo.lower() :
         Ht1 = " "
         HtA = ""
         while a < len(Decoded) and Decoded[a] in StrHt:
-            while Ht0 != "" and Ht1 != "": 
+            while Ht1 != "": 
                 x = 0
                 y = 0
                 z = 0
@@ -62,9 +61,10 @@ while "quit" not in ToDo.lower() and "exit" not in ToDo.lower() :
                 if Decoded[a] in Ht0 and Ht1 != "":
                     StrHt = Ht0
                     HtA += "0"
-                if Decoded[a] in Ht1 and Ht0 != "":
+                if Decoded[a] in Ht1:
                     StrHt = Ht1
                     HtA += "1"
+                print(StrHt[1:len(StrHt)-1])
             if Decoded[a] == StrHt[2]:
                 HtA += "0"
             elif Decoded[a] == StrHt[7]:
@@ -77,6 +77,10 @@ while "quit" not in ToDo.lower() and "exit" not in ToDo.lower() :
                 HtA += "00"
             elif Decoded[a] == StrHt[8]:
                 HtA += "01"
+            Ht0 = " "
+            Ht1 = " "
+            print("It is incementing a!")
+            print(StrHt)
             StrHt = str(Ht)
             StrHt = StrHt[1:len(StrHt)-1]
             a += 1
