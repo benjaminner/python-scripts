@@ -44,7 +44,7 @@ while "quit" not in ToDo.lower() and "exit" not in ToDo.lower() :
         Ht1 = " "
         HtA = ""
         while a < len(Decoded) and Decoded[a] in StrHt:
-            while Ht1 != "": 
+            while Ht1 != "" and Ht0 != "": 
                 x = 0
                 y = 0
                 z = 0
